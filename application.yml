@@ -1,0 +1,4 @@
+elasticsearch:
+  clustername: "smaiornikoff-cluster"
+  host: "localhost"
+  port: 9300
