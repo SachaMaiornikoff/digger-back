@@ -1,6 +1,6 @@
-#Sacha Maiornikoff
+# Sacha Maiornikoff
 
-##SQL database creation
+## SQL database creation
 
     CREATE USER 'xxx'@'%' IDENTIFIED BY  '***';
     GRANT USAGE ON * . * TO  'xxx'@'%' IDENTIFIED BY  '***' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
@@ -18,10 +18,10 @@
 
 Just have an ElasticSearch instance running on localhost:9300, the app will create the index.
 
-##Front
+## Front
 
 Front project coming soon on another repo (will upload URL when it's up)
 
-##Back
+## Back
 
 Just run BackApplication to start the back. Postman collections to test it comming soon.
