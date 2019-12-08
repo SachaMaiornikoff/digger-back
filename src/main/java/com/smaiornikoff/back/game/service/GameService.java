@@ -1,20 +1,20 @@
 package com.smaiornikoff.back.game.service;
 
-import com.smaiornikoff.back.game.model.Game;
 import com.smaiornikoff.back.game.model.GameInput;
+import com.smaiornikoff.back.game.model.GameOutput;
 
-import java.util.Optional;
+import java.util.List;
 
 
 public interface GameService {
 
-    Game save(GameInput game);
+    GameOutput save(GameInput game);
 
     void delete(String gameId);
 
-    Optional<Game> findOne(String id);
+    GameOutput findOne(String id);
 
-    Iterable<Game> findAll();
+    List<GameOutput> findAll();
 
-    Game update(GameInput gameInput, String gameId);
+    GameOutput update(GameInput gameInput, String gameId);
 }

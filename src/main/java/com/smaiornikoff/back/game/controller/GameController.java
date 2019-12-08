@@ -21,17 +21,22 @@ public class GameController {
     private GameService gameService;
 
     @GetMapping(value = "")
-    public ResponseEntity getFolders(HttpServletRequest httpServletRequest) throws IOException {
+    public ResponseEntity getGames(HttpServletRequest httpServletRequest) throws IOException {
         return new ResponseEntity<>(gameService.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity getGameById(HttpServletRequest httpServletRequest, @PathVariable("id") String gameId) {
+        return new ResponseEntity<>(gameService.findOne(gameId), HttpStatus.OK);
+    }
+
     @PostMapping(value = "")
-    public ResponseEntity createFolders(HttpServletRequest httpServletRequest, @RequestBody GameInput game) {
+    public ResponseEntity createGame(HttpServletRequest httpServletRequest, @RequestBody GameInput game) {
         return new ResponseEntity(gameService.save(game), HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity deleteFolders(HttpServletRequest httpServletRequest, @PathVariable("id") String gameId) {
+    public ResponseEntity deleteGame(HttpServletRequest httpServletRequest, @PathVariable("id") String gameId) {
 
         gameService.delete(gameId);
 
@@ -39,7 +44,7 @@ public class GameController {
     }
 
     @PostMapping(value = "/{id}")
-    public ResponseEntity updateFolders(HttpServletRequest httpServletRequest, @RequestBody GameInput game, @PathVariable("id") String gameId) {
+    public ResponseEntity updateGame(HttpServletRequest httpServletRequest, @RequestBody GameInput game, @PathVariable("id") String gameId) {
         return new ResponseEntity(gameService.update(game, gameId), HttpStatus.OK);
     }
 
