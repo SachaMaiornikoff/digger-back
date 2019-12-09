@@ -34,11 +34,13 @@ public class GameServiceImpl implements GameService {
 
         String idHash = DigestUtils.sha1Hex(DateTime.now().toString()).substring(15);
 
-        DateTimeFormatter fmt = DateTimeFormat.forPattern("dd/MM/yyyy");
+        DateTimeFormatter fmtInput = DateTimeFormat.forPattern("yyyy-MM-dd");
+
+        DateTimeFormatter fmtOutput = DateTimeFormat.forPattern("dd/MM/yyyy");
 
         Game newGame = Game.builder()
             .id(idHash)
-            .releaseDate(fmt.parseDateTime(game.getReleaseDate()).toString(fmt))
+            .releaseDate(fmtInput.parseDateTime(game.getReleaseDate()).toString(fmtOutput))
             .studio(game.getStudio())
             .title(game.getTitle())
             .build();
@@ -69,9 +71,12 @@ public class GameServiceImpl implements GameService {
     }
 
     public GameOutput update(GameInput gameInput, String gameId) {
+        DateTimeFormatter fmtInput = DateTimeFormat.forPattern("yyyy-MM-dd");
+
+        DateTimeFormatter fmtOutput = DateTimeFormat.forPattern("dd/MM/yyyy");
         Game game = Game.builder()
             .id(gameId)
-            .releaseDate(gameInput.getReleaseDate())
+            .releaseDate(fmtInput.parseDateTime(gameInput.getReleaseDate()).toString(fmtOutput))
             .studio(gameInput.getStudio())
             .title(gameInput.getTitle())
             .build();
