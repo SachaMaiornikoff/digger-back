@@ -45,6 +45,16 @@ public class GameServiceImpl implements GameService {
             .title(game.getTitle())
             .build();
 
+        if (game.getImage() != null) {
+            try {
+                Path path = Paths.get(imageFolderPath + "/" + idHash + ".jpg");
+
+                Files.write(path,game.getImage());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
         return mapGameToGameOutput(gameRepository.index(newGame));
     }
 

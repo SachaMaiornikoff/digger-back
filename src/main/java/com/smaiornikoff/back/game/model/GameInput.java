@@ -18,4 +18,6 @@ public class GameInput {
     String studio;
 
     String releaseDate;
+
+    byte[] image;
 }
