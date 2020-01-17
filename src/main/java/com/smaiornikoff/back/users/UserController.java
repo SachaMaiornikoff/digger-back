@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
 @Controller
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:8000")
 @RequestMapping(value = "/users", produces = APPLICATION_JSON_VALUE)
 public class UserController {
 
