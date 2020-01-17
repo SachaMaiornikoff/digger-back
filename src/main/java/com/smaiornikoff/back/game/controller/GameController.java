@@ -14,7 +14,6 @@ import java.io.IOException;
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
 @Controller
-@CrossOrigin(origins = "http://localhost:8000")
 @RequestMapping(value = "/games", produces = APPLICATION_JSON_VALUE)
 public class GameController {
 

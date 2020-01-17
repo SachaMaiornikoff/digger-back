@@ -1,8 +1,8 @@
 package com.smaiornikoff.users.service.impl;
 
 import com.smaiornikoff.users.model.Users;
-import com.smaiornikoff.users.repository.UsersRepository;
 import com.smaiornikoff.users.service.UsersService;
+import com.smaiornikoff.users.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
