@@ -1,6 +1,6 @@
-package com.smaiornikoff.back.users;
+package com.smaiornikoff.users.controller;
 
-import com.smaiornikoff.back.users.service.UserService;
+import com.smaiornikoff.users.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,14 +16,15 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
 @Controller
 @CrossOrigin(origins = "http://localhost:8000")
-@RequestMapping(value = "/users", produces = APPLICATION_JSON_VALUE)
-public class UserController {
+@RequestMapping(value = "/games", produces = APPLICATION_JSON_VALUE)
+public class UsersController {
 
     @Autowired
-    UserService userService;
+    private UsersService usersService;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity getUser(HttpServletRequest httpServletRequest, @PathVariable("id") Integer userId) {
-        return new ResponseEntity(userService.getUser(userId), HttpStatus.OK);
+    public ResponseEntity getGameById(HttpServletRequest httpServletRequest, @PathVariable("id") Integer gameId) {
+        return new ResponseEntity<>(usersService.findOne(gameId), HttpStatus.OK);
     }
+
 }

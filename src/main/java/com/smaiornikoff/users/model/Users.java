@@ -1,29 +1,25 @@
-package com.smaiornikoff.back.users.model;
+package com.smaiornikoff.users.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import javax.persistence.*;
-
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Document(indexName = "user", type = "_doc")
 public class Users {
 
     @Id
-    private Integer id;
+    String id;
 
-    private String password;
+    String title;
 
-    private String email;
+    String studio;
 
-    private Integer privileges;
-
-    private String description;
-
+    String releaseDate;
 }
