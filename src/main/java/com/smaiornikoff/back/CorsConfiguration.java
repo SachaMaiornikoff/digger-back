@@ -13,6 +13,6 @@ public class CorsConfiguration implements WebMvcConfigurer
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
             .allowedMethods("GET", "POST")
-            .allowedOrigins("http://localhost:8000", "https://hardcore-yalow-d36656.netlify.com/");
+            .allowedOrigins("https://hardcore-yalow-d36656.netlify.com");
     }
 }
