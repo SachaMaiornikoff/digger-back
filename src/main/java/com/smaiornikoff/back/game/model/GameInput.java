@@ -19,5 +19,7 @@ public class GameInput {
 
     String releaseDate;
 
-    byte[] image;
+    String coverUrl;
+
+    String gameplayImageUrl;
 }

@@ -12,6 +12,4 @@ import lombok.NoArgsConstructor;
 public class GameOutput {
 
     Game game;
-
-    byte[] image;
 }
