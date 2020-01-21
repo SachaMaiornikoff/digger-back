@@ -17,6 +17,8 @@ public class Users {
     @Id
     String id;
 
+    String pseudo;
+
     String description;
 
     String password;
