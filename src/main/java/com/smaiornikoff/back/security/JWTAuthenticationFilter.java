@@ -17,9 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static com.smaiornikoff.back.security.SecurityConstants.HEADER_STRING;
-import static com.smaiornikoff.back.security.SecurityConstants.TOKEN_PREFIX;
-
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private AuthenticationManager authenticationManager;
 
@@ -56,7 +53,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             FilterChain chain,
                                             Authentication auth) throws IOException, ServletException {
 
-        String token =jwtService.createToken(auth);
-        res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
+        String token = jwtService.createToken(auth);
+        res.addHeader("Content-Type", "application/json");
+        res.getWriter().write("{\"token\":\"" + token + "\"}");
     }
 }

@@ -1,6 +1,7 @@
 package com.smaiornikoff.back.controller;
 
 import com.smaiornikoff.back.model.Users;
+import com.smaiornikoff.back.service.JwtService;
 import com.smaiornikoff.back.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +25,8 @@ public class UsersController {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-
+    @Autowired
+    private JwtService jwtService;
 
     @GetMapping(value = "/{id}")
     public ResponseEntity getUserById(HttpServletRequest httpServletRequest, @PathVariable("id") Integer id) {
@@ -36,6 +38,13 @@ public class UsersController {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
         return new ResponseEntity(usersService.index(user), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/me")
+    public ResponseEntity getLoggedUser(HttpServletRequest httpServletRequest) {
+        Users user = jwtService.getUserLoggedIn(httpServletRequest.getHeader("Authorization"));
+
+        return new ResponseEntity(user, HttpStatus.OK);
     }
 
 }
