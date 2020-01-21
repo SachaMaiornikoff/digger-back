@@ -17,7 +17,7 @@ import org.springframework.data.elasticsearch.repository.config.EnableElasticsea
 import java.net.URI;
 
 @Configuration
-@EnableElasticsearchRepositories(basePackages = "com.smaiornikoff.back.game.repository")
+@EnableElasticsearchRepositories(basePackages = "com.smaiornikoff.back.repository")
 public class ElasticsearchConfig extends AbstractElasticsearchConfiguration {
 
     @Value("${elasticsearch.host}")
