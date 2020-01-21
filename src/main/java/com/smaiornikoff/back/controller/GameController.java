@@ -1,6 +1,7 @@
 package com.smaiornikoff.back.controller;
 
 import com.smaiornikoff.back.model.GameInput;
+import com.smaiornikoff.back.model.input.GameFilter;
 import com.smaiornikoff.back.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,12 +23,17 @@ public class GameController {
 
     @GetMapping(value = "")
     public ResponseEntity getGames(HttpServletRequest httpServletRequest) throws IOException {
-        return new ResponseEntity<>(gameService.findAll(), HttpStatus.OK);
+        return new ResponseEntity(gameService.findAll(), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/search")
+    public ResponseEntity searchGamesByQuery(HttpServletRequest httpServletRequest, @RequestBody GameFilter gameFilter) {
+        return new ResponseEntity(gameService.search(gameFilter), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity getGameById(HttpServletRequest httpServletRequest, @PathVariable("id") String gameId) {
-        return new ResponseEntity<>(gameService.findOne(gameId), HttpStatus.OK);
+        return new ResponseEntity(gameService.findOne(gameId), HttpStatus.OK);
     }
 
     @PostMapping(value = "")

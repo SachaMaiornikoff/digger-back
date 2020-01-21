@@ -2,16 +2,24 @@ package com.smaiornikoff.back.service.impl;
 
 import com.smaiornikoff.back.model.Game;
 import com.smaiornikoff.back.model.GameInput;
+import com.smaiornikoff.back.model.input.GameFilter;
 import com.smaiornikoff.back.repository.GameRepository;
 import com.smaiornikoff.back.service.GameService;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.elasticsearch.common.Strings;
+import org.elasticsearch.index.query.QueryBuilder;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+
+import static org.elasticsearch.index.query.QueryBuilders.matchAllQuery;
+import static org.elasticsearch.index.query.QueryBuilders.termsQuery;
 
 @Service
 public class GameServiceImpl implements GameService {
@@ -69,5 +77,19 @@ public class GameServiceImpl implements GameService {
             .build();
 
         return gameRepository.save(game);
+    }
+
+    public Page<Game> search(GameFilter gameFilter) {
+        //try {
+            //TimeUnit.SECONDS.sleep(2);
+
+            QueryBuilder queryBuilder = Strings.isNullOrEmpty(gameFilter.getQuery()) ? matchAllQuery() : termsQuery("title", gameFilter.getQuery().toLowerCase());
+
+            return gameRepository.search(queryBuilder, PageRequest.of(0, 10));
+        /*} catch (InterruptedException e) {
+            e.printStackTrace();
+
+            return null;
+        }*/
     }
 }
