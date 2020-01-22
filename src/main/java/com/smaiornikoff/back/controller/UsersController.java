@@ -8,8 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,9 +21,6 @@ public class UsersController {
     private UsersService usersService;
 
     @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-    @Autowired
     private JwtService jwtService;
 
     @GetMapping(value = "/{id}")
@@ -35,8 +30,6 @@ public class UsersController {
 
     @PostMapping(value = "/sign-up")
     public ResponseEntity signUp(HttpServletRequest httpServletRequest, @RequestBody Users user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-
         return new ResponseEntity(usersService.index(user), HttpStatus.OK);
     }
 
