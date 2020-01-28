@@ -10,6 +10,8 @@ public interface UsersService {
 
     Users findByEmail(String email);
 
+    Users findByPseudo(String pseudo);
+
     Users index(Users user);
 
 }

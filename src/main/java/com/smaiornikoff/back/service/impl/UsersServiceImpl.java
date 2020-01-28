@@ -32,6 +32,12 @@ public class UsersServiceImpl implements UsersService {
         return user.isPresent() ? user.get() : null;
     }
 
+    public Users findByPseudo(String pseudo) {
+        Optional<Users> user = usersRepository.findByPseudo(pseudo);
+
+        return user.isPresent() ? user.get() : null;
+    }
+
     public Users index(Users user) {
         String idHash = DigestUtils.sha1Hex(DateTime.now().toString()).substring(15);
 

@@ -34,6 +34,8 @@ public class GameServiceImpl implements GameService {
             .title(game.getTitle())
             .coverUrl(game.getCoverUrl())
             .gameplayImageUrl(game.getGameplayImageUrl())
+            .storyline(game.getStoryline())
+            .summary(game.getSummary())
             .build();
 
         gameRepository.index(newGame);
@@ -66,6 +68,10 @@ public class GameServiceImpl implements GameService {
             .releaseDate(fmtInput.parseDateTime(gameInput.getReleaseDate()).toString(fmtOutput))
             .studio(gameInput.getStudio())
             .title(gameInput.getTitle())
+            .coverUrl(gameInput.getCoverUrl())
+            .gameplayImageUrl(gameInput.getGameplayImageUrl())
+            .storyline(gameInput.getStoryline())
+            .summary(gameInput.getSummary())
             .build();
 
         return gameRepository.save(game);

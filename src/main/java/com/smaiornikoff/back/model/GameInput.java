@@ -20,4 +20,8 @@ public class GameInput {
     String coverUrl;
 
     String gameplayImageUrl;
+
+    String storyline;
+
+    String summary;
 }

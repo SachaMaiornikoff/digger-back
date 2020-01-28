@@ -26,4 +26,8 @@ public class Game {
     String coverUrl;
 
     String gameplayImageUrl;
+
+    String storyline;
+
+    String summary;
 }
