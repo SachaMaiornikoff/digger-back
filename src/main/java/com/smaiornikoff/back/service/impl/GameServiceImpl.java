@@ -9,6 +9,9 @@ import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -55,6 +58,12 @@ public class GameServiceImpl implements GameService {
 
     public Iterable<Game> findAll() {
         Iterable<Game> games = gameRepository.findAll();
+
+        return games;
+    }
+
+    public Page<Game> findAllPaginate(Integer pageNum) {
+        Page<Game> games = gameRepository.findAll(PageRequest.of(pageNum, 15, Sort.Direction.ASC, "title.keyword"));
 
         return games;
     }
