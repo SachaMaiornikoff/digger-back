@@ -39,6 +39,7 @@ public class GameServiceImpl implements GameService {
             .gameplayImageUrl(game.getGameplayImageUrl())
             .storyline(game.getStoryline())
             .summary(game.getSummary())
+            .igdb(game.getIgdb())
             .build();
 
         gameRepository.index(newGame);

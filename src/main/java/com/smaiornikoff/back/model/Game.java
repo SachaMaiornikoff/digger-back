@@ -30,4 +30,6 @@ public class Game {
     String storyline;
 
     String summary;
+
+    String igdb;
 }

@@ -24,4 +24,6 @@ public class GameInput {
     String storyline;
 
     String summary;
+
+    String igdb;
 }
