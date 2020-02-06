@@ -32,4 +32,6 @@ public class Game {
     String summary;
 
     String igdb;
+
+    String g2alink;
 }

@@ -26,4 +26,6 @@ public class GameInput {
     String summary;
 
     String igdb;
+
+    String g2alink;
 }

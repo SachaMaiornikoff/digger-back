@@ -40,6 +40,7 @@ public class GameServiceImpl implements GameService {
             .storyline(game.getStoryline())
             .summary(game.getSummary())
             .igdb(game.getIgdb())
+            .g2alink(game.getG2alink())
             .build();
 
         gameRepository.index(newGame);
@@ -82,6 +83,8 @@ public class GameServiceImpl implements GameService {
             .gameplayImageUrl(gameInput.getGameplayImageUrl())
             .storyline(gameInput.getStoryline())
             .summary(gameInput.getSummary())
+            .igdb(gameInput.getIgdb())
+            .g2alink(gameInput.getG2alink())
             .build();
 
         return gameRepository.save(game);
