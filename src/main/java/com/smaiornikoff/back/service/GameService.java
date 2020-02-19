@@ -16,7 +16,7 @@ public interface GameService {
 
     Iterable<Game> findAll();
 
-    Page<Game> findAllPaginate(Integer pageNum);
+    Page<Game> findAllPaginate(Integer pageNum, String search);
 
     Game update(GameInput gameInput, String gameId);
 }

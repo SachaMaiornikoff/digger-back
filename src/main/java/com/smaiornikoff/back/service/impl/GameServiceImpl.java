@@ -64,8 +64,15 @@ public class GameServiceImpl implements GameService {
         return games;
     }
 
-    public Page<Game> findAllPaginate(Integer pageNum) {
-        Page<Game> games = gameRepository.findAll(PageRequest.of(pageNum, 60, Sort.Direction.ASC, "title.keyword"));
+    public Page<Game> findAllPaginate(Integer pageNum, String query) {
+
+        Page<Game> games;
+
+        if (query == null) {
+            games = gameRepository.findAll(PageRequest.of(pageNum, 60, Sort.Direction.ASC, "title.keyword"));
+        }else {
+            games = gameRepository.getGamesByTitleContaining(query, PageRequest.of(pageNum, 60, Sort.Direction.ASC, "title.keyword"));
+        }
 
         return games;
     }

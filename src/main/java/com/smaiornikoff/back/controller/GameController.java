@@ -26,8 +26,8 @@ public class GameController {
     }
 
     @GetMapping(value = "/paginate/{pageNum}")
-    public ResponseEntity getGamesPaginate(HttpServletRequest httpServletRequest, @PathVariable("pageNum") Integer pageNum) {
-        return new ResponseEntity<>(gameService.findAllPaginate(pageNum), HttpStatus.OK);
+    public ResponseEntity getGamesPaginate(HttpServletRequest httpServletRequest, @PathVariable("pageNum") Integer pageNum, @RequestParam(required = false) String search) {
+        return new ResponseEntity<>(gameService.findAllPaginate(pageNum, search), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
