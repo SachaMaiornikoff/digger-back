@@ -19,4 +19,6 @@ public interface GameService {
     Page<Game> findAllPaginate(Integer pageNum, String search);
 
     Game update(GameInput gameInput, String gameId);
+
+    Boolean existsByIgdb(String igdb);
 }

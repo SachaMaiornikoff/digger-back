@@ -53,4 +53,9 @@ public class GameController {
         return new ResponseEntity(gameService.update(game, gameId), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/exists/{igid}")
+    public ResponseEntity checkIfExists(HttpServletRequest httpServletRequest, @PathVariable("igid") String gameId) {
+        return new ResponseEntity<>(gameService.existsByIgdb(gameId), HttpStatus.OK);
+    }
+
 }

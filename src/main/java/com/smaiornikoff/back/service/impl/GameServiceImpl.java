@@ -96,4 +96,8 @@ public class GameServiceImpl implements GameService {
 
         return gameRepository.save(game);
     }
+
+    public Boolean existsByIgdb(String igdb) {
+        return gameRepository.getGamesByIgdbEquals(igdb).isPresent();
+    }
 }
